@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 #{title}
+        -var event = {title}
+
+        if addTask
+          // register form
+          form(method='POST' action='/task')
+            div.form-group
+              label(for='name') Name:
+              input#name.form-control(type='text', placeholder='Name' name='name')
+            div.form-group
+              label(for='description') Description:
+              input#description.form-control(type='text', placeholder='Description' name='description')
+            div.form-group
+              label(for='status') Status:
+              input#status.form-control(type='text', placeholder='status' name='status')
+            button.btn.btn-primary(type='submit') Add Data
+
+      .row
+        .col-md-6.col-md-offset-3
+          p 
+    br
+
+    if tasks
+      for task in tasks
+        .row
+          .col-sm-12
+            .card
+              .card-body.w-100
+                p ID: #{ task.id }
+                p Name: #{ task.name }
+                p Description: #{ task.description }
+                
+                - var btnType = 'info'
+                - var btnSize = 'lg'
+                - var text = 'View Details'
+
+                a(class='btn btn-primary border-0' href='/task/view/' + task.id) Details
+
+            p
+    if taskDetail
+      .row
+          .col-sm-12
+            .card
+              .card-body.w-100
+                p ID: #{ taskDetail.id }
+                p Name: #{ taskDetail.name }
+                p Description: #{ taskDetail.description }
+                
+            p
