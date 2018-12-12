@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 //database
-mongoose.connect('mongodb://mongo:hwyaa370@ds139705.mlab.com:39705/kanbankan').then(
+mongoose.connect('mongodb://mongo:h@ds139705.mlab.com:39705/kanbankan').then(
   () => console.log('Database ready....'),
   err => console.log("error establishing a connection")
 );
